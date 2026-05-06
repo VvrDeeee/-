@@ -724,54 +724,54 @@ if st.session_state.show_result:
     
     # 个性化建议
     st.markdown("### 💡 个性化健康建议")
-    
+
     suggestions = []
-    
+
     if risk_percent > 60:
-        suggestions.append("🔴 **立即行动**：建议尽快预约心脏科医生进行全面检查")
-    
+        suggestions.append("🔴 <strong>立即行动</strong>：建议尽快预约心脏科医生进行全面检查")
+
     if bmi >= 28:
-        suggestions.append("⚖️ **控制体重**：您的BMI偏高，建议通过饮食控制和运动减重")
+        suggestions.append("⚖️ <strong>控制体重</strong>：您的BMI偏高，建议通过饮食控制和运动减重")
     elif bmi >= 24:
-        suggestions.append("⚖️ **注意体重**：您的BMI偏高，建议适当控制")
-    
+        suggestions.append("⚖️ <strong>注意体重</strong>：您的BMI偏高，建议适当控制")
+
     if smoker_val in ["Current smoker - now smokes every day", "Current smoker - now smokes some days"]:
-        suggestions.append("🚭 **戒烟建议**：吸烟是心血管疾病的主要风险因素，建议尽快戒烟")
+        suggestions.append("🚭 <strong>戒烟建议</strong>：吸烟是心血管疾病的主要风险因素，建议尽快戒烟")
     elif smoker_val == "Former smoker":
-        suggestions.append("🚭 **保持戒烟**：您已戒烟，这对心脏健康非常有益")
-    
+        suggestions.append("🚭 <strong>保持戒烟</strong>：您已戒烟，这对心脏健康非常有益")
+
     if inputs.get('SleepHours', 7) < 6:
-        suggestions.append("😴 **改善睡眠**：睡眠不足会增加心脏负担，建议保证7-8小时睡眠")
+        suggestions.append("😴 <strong>改善睡眠</strong>：睡眠不足会增加心脏负担，建议保证7-8小时睡眠")
     elif inputs.get('SleepHours', 7) > 9:
-        suggestions.append("😴 **规律作息**：睡眠时间过长也可能与心脏问题相关")
-    
+        suggestions.append("😴 <strong>规律作息</strong>：睡眠时间过长也可能与心脏问题相关")
+
     if inputs.get('PhysicalActivities') == "No":
-        suggestions.append("🏃 **增加运动**：建议每周进行至少150分钟中等强度运动")
-    
+        suggestions.append("🏃 <strong>增加运动</strong>：建议每周进行至少150分钟中等强度运动")
+
     if inputs.get('AlcoholDrinkers') == "Yes":
-        suggestions.append("🍷 **限制饮酒**：过量饮酒会增加心血管疾病风险，建议适量或戒酒")
-    
+        suggestions.append("🍷 <strong>限制饮酒</strong>：过量饮酒会增加心血管疾病风险，建议适量或戒酒")
+
     if inputs.get('HadDiabetes') == "Yes":
-        suggestions.append("🩸 **控制血糖**：糖尿病是心血管疾病的重要风险因素，请遵医嘱控制血糖")
-    
+        suggestions.append("🩸 <strong>控制血糖</strong>：糖尿病是心血管疾病的重要风险因素，请遵医嘱控制血糖")
+
     if inputs.get('HadDepressiveDisorder') == "Yes":
-        suggestions.append("🧠 **关注心理健康**：抑郁症与心血管疾病风险相关，建议寻求专业帮助")
-    
+        suggestions.append("🧠 <strong>关注心理健康</strong>：抑郁症与心血管疾病风险相关，建议寻求专业帮助")
+
     if inputs.get('HadKidneyDisease') == "Yes":
-        suggestions.append("🩺 **肾功能管理**：慢性肾病与心血管疾病密切相关，请定期随访")
-    
+        suggestions.append("🩺 <strong>肾功能管理</strong>：慢性肾病与心血管疾病密切相关，请定期随访")
+
     if inputs.get('HadAngina') == "Yes":
-        suggestions.append("❤️ **心脏专科随访**：有心绞痛史的患者，建议定期心脏科复查")
-    
+        suggestions.append("❤️ <strong>心脏专科随访</strong>：有心绞痛史的患者，建议定期心脏科复查")
+
     if inputs.get('PhysicalHealthDays', 0) > 10:
-        suggestions.append("💊 **关注身体不适**：过去30天内身体不适天数较多，建议咨询医生")
-    
+        suggestions.append("💊 <strong>关注身体不适</strong>：过去30天内身体不适天数较多，建议咨询医生")
+
     if inputs.get('MentalHealthDays', 0) > 10:
-        suggestions.append("🧘 **关注心理状态**：心理健康同样重要，建议适当放松和减压")
-    
+        suggestions.append("🧘 <strong>关注心理状态</strong>：心理健康同样重要，建议适当放松和减压")
+
     if not suggestions:
-        suggestions.append("✅ **保持现状**：您目前的生活方式良好，请继续保持！")
-    
+        suggestions.append("✅ <strong>保持现状</strong>：您目前的生活方式良好，请继续保持！")
+
     for s in suggestions:
         st.markdown(f'<div class="suggestion-item">{s}</div>', unsafe_allow_html=True)
     
