@@ -233,8 +233,12 @@ with st.sidebar:
 # ==================== 主页面标题 ====================
 col_title1, col_title2, col_title3 = st.columns([1, 3, 1])
 with col_title2:
-    st.markdown("# ❤️ 心血管疾病风险预测系统")
-    st.markdown("<p style='text-align: center; color: #666;'>基于机器学习的心脏健康评估工具</p>", unsafe_allow_html=True)
+    st.markdown("""
+    <div style="text-align: center;">
+        <h1 style="text-align: center; margin: 0;">❤️ 心血管疾病风险预测系统</h1>
+        <p style="text-align: center; color: #666;">基于机器学习的心脏健康评估工具</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 st.markdown("---")
 
