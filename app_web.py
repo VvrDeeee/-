@@ -119,7 +119,7 @@ st.markdown("""
     /* ==================== 标题区 ==================== */
     .main-title-glow {
         font-family: 'Orbitron', 'Microsoft YaHei', sans-serif;
-        font-size: 2.6rem;
+        font-size: 3rem;
         font-weight: 700;
         background: linear-gradient(135deg, #60c0ff 0%, #a0e0ff 40%, #ffffff 55%, #80d0ff 70%, #40a0e0 100%);
         -webkit-background-clip: text;
@@ -130,10 +130,10 @@ st.markdown("""
         letter-spacing: 2px;
     }
     .subtitle-glow {
-        color: #80b0d0;
+        color: #90c0e0;
         letter-spacing: 3px;
-        font-size: 0.9rem;
-        opacity: 0.85;
+        font-size: 1.05rem;
+        opacity: 0.9;
         text-shadow: 0 0 8px rgba(100,160,220,0.3);
     }
 
@@ -164,9 +164,11 @@ st.markdown("""
     .step-header-card h2 {
         color: #60c0ff !important;
         text-shadow: 0 0 12px rgba(96,192,255,0.3);
+        font-size: 1.7rem !important;
     }
     .step-header-card p {
-        color: #8090b0 !important;
+        color: #a0c0e8 !important;
+        font-size: 1.05rem;
     }
 
     /* ==================== 通用卡片 ==================== */
@@ -199,8 +201,9 @@ st.markdown("""
         box-shadow: 0 0 18px rgba(0,180,255,0.25), 0 0 40px rgba(0,180,255,0.08) !important;
     }
     .stSelectbox label, .stNumberInput label, .stSlider label {
-        color: #90b0d0 !important;
+        color: #b8d0f0 !important;
         font-weight: 500;
+        font-size: 0.95rem !important;
     }
 
     /* 数字输入框 - 暴力覆盖所有内层元素 */
@@ -568,7 +571,7 @@ st.markdown("""
 
     /* ==================== 响应式微调 ==================== */
     @media (max-width: 768px) {
-        .main-title-glow { font-size: 1.8rem; }
+        .main-title-glow { font-size: 2rem; }
     }
 </style>
 
@@ -833,7 +836,7 @@ with st.sidebar:
 col_title1, col_title2, col_title3 = st.columns([1, 3, 1])
 with col_title2:
     st.markdown("""
-    <div style="text-align: center; padding: 20px 0 15px 0;">
+    <div style="text-align: center; padding: 25px 0 18px 0;">
         <div class="main-title-glow">❤️ 心血管疾病风险预测系统</div>
         <p class="subtitle-glow">基于机器学习的心脏健康评估工具</p>
         <div style="margin-top: 8px;">
@@ -1018,7 +1021,7 @@ if not st.session_state.show_result:
 
     cols = st.columns([1, 3, 1])
     with cols[1]:
-        st.markdown(f"<p style='text-align:center; font-size:0.9rem; color: #8090b0; padding: 6px 0;'>第 {st.session_state.step}/4 步</p>", unsafe_allow_html=True)
+        st.markdown(f"<p style='text-align:center; font-size:1.1rem; color: #a0c0e0; padding: 6px 0;'>第 {st.session_state.step}/4 步</p>", unsafe_allow_html=True)
         st.progress(st.session_state.step / 4)
 
     st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
@@ -1206,22 +1209,42 @@ if st.session_state.show_result:
         fig = go.Figure(go.Indicator(
             mode="gauge+number",
             value=risk_percent,
-            title={"text": "心血管疾病风险指数"},
+            number={
+                'font': {'size': 48, 'color': '#d0e8ff'},
+                'suffix': '%'
+            },
+            title={
+                "text": "心血管疾病风险指数",
+                'font': {'size': 18, 'color': '#90b8d8'}
+            },
             domain={'x': [0, 1], 'y': [0, 1]},
             gauge={
-                'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},
-                'bar': {'color': "darkred" if risk_percent > 60 else "orange" if risk_percent > 30 else "green"},
-                'bgcolor': "white",
-                'borderwidth': 2,
-                'bordercolor': "gray",
+                'axis': {
+                    'range': [0, 100],
+                    'tickwidth': 1,
+                    'tickcolor': '#80b0d0',
+                    'tickfont': {'color': '#a0c0e0', 'size': 12}
+                },
+                'bar': {
+                    'color': "#ff4444" if risk_percent > 60 else "#ffa040" if risk_percent > 30 else "#2ed573",
+                    'thickness': 0.25
+                },
+                'bgcolor': 'rgba(0,0,0,0)',
+                'borderwidth': 0,
                 'steps': [
-                    {'range': [0, 30], 'color': "#d4edda"},
-                    {'range': [30, 60], 'color': "#fff3cd"},
-                    {'range': [60, 100], 'color': "#f8d7da"}
+                    {'range': [0, 30], 'color': 'rgba(46,213,115,0.25)'},
+                    {'range': [30, 60], 'color': 'rgba(255,160,64,0.25)'},
+                    {'range': [60, 100], 'color': 'rgba(255,68,68,0.2)'}
                 ]
             }
         ))
-        fig.update_layout(height=250, margin=dict(l=20, r=20, t=40, b=20))
+        fig.update_layout(
+            height=280,
+            margin=dict(l=20, r=20, t=50, b=20),
+            paper_bgcolor='rgba(0,0,0,0)',
+            plot_bgcolor='rgba(0,0,0,0)',
+            font={'color': '#a0c0e0'}
+        )
         st.plotly_chart(fig, use_container_width=True)
 
     st.markdown("### 📊 健康指标概览")
@@ -1230,9 +1253,9 @@ if st.session_state.show_result:
     with col_m1:
         st.markdown(f'''
         <div class="metric-card">
-            <div style="font-size: 0.9rem; color: #6090c0;">风险评分</div>
-            <div style="font-size: 1.8rem; font-weight: bold; color: #d0e8ff;">{risk_percent:.1f}%</div>
-            <div style="font-size: 0.8rem; color: {'#ff6b6b' if risk_percent>=60 else '#ffa502' if risk_percent>=30 else '#2ed573'};">
+            <div style="font-size: 1.1rem; color: #6090c0; margin-bottom: 4px;">风险评分</div>
+            <div style="font-size: 2.2rem; font-weight: bold; color: #d0e8ff;">{risk_percent:.1f}%</div>
+            <div style="font-size: 0.9rem; color: {'#ff6b6b' if risk_percent>=60 else '#ffa502' if risk_percent>=30 else '#2ed573'}; margin-top: 4px;">
                 {'🔴 高风险' if risk_percent>=60 else '🟡 中风险' if risk_percent>=30 else '🟢 低风险'}
             </div>
         </div>
@@ -1241,27 +1264,27 @@ if st.session_state.show_result:
     with col_m2:
         st.markdown(f'''
         <div class="metric-card">
-            <div style="font-size: 0.9rem; color: #6090c0;">BMI指数</div>
-            <div style="font-size: 1.8rem; font-weight: bold; color: #d0e8ff;">{bmi:.1f}</div>
-            <div style="font-size: 0.8rem; color: #80a0c0;">{bmi_status}</div>
+            <div style="font-size: 1.1rem; color: #6090c0; margin-bottom: 4px;">BMI指数</div>
+            <div style="font-size: 2.2rem; font-weight: bold; color: #d0e8ff;">{bmi:.1f}</div>
+            <div style="font-size: 0.9rem; color: #80a0c0; margin-top: 4px;">{bmi_status}</div>
         </div>
         ''', unsafe_allow_html=True)
 
     with col_m3:
         st.markdown(f'''
         <div class="metric-card">
-            <div style="font-size: 0.9rem; color: #6090c0;">睡眠质量</div>
-            <div style="font-size: 1.8rem; font-weight: bold; color: #d0e8ff;">{inputs.get('SleepHours', 7)}h</div>
-            <div style="font-size: 0.8rem; color: #80a0c0;">{sleep_status}</div>
+            <div style="font-size: 1.1rem; color: #6090c0; margin-bottom: 4px;">睡眠质量</div>
+            <div style="font-size: 2.2rem; font-weight: bold; color: #d0e8ff;">{inputs.get('SleepHours', 7)}h</div>
+            <div style="font-size: 0.9rem; color: #80a0c0; margin-top: 4px;">{sleep_status}</div>
         </div>
         ''', unsafe_allow_html=True)
 
     with col_m4:
         st.markdown(f'''
         <div class="metric-card">
-            <div style="font-size: 0.9rem; color: #6090c0;">运动情况</div>
-            <div style="font-size: 1.8rem; font-weight: bold; color: #d0e8ff;">{activity_status}</div>
-            <div style="font-size: 0.8rem; color: #80a0c0;">{'✅ 每周运动' if activity_status=='活跃' else '⚠️ 建议增加运动'}</div>
+            <div style="font-size: 1.1rem; color: #6090c0; margin-bottom: 4px;">运动情况</div>
+            <div style="font-size: 2.2rem; font-weight: bold; color: #d0e8ff;">{activity_status}</div>
+            <div style="font-size: 0.9rem; color: #80a0c0; margin-top: 4px;">{'✅ 每周运动' if activity_status=='活跃' else '⚠️ 建议增加运动'}</div>
         </div>
         ''', unsafe_allow_html=True)
 
