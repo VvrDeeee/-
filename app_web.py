@@ -13,9 +13,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ╔══════════════════════════════════════════════════════════════╗
-# ║                    🌌 星空 + 蓝黑科技配色 CSS                  ║
-# ╚══════════════════════════════════════════════════════════════╝
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
@@ -58,7 +55,8 @@ st.markdown("""
     .main .block-container {
         position: relative;
         z-index: 1;
-        padding-top: 1rem !important;
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
     }
 
     /* ==================== 科技感线条装饰 ==================== */
@@ -121,7 +119,7 @@ st.markdown("""
     /* ==================== 标题区 ==================== */
     .main-title-glow {
         font-family: 'Orbitron', 'Microsoft YaHei', sans-serif;
-        font-size: 2.2rem;
+        font-size: 2.6rem;
         font-weight: 700;
         background: linear-gradient(135deg, #60c0ff 0%, #a0e0ff 40%, #ffffff 55%, #80d0ff 70%, #40a0e0 100%);
         -webkit-background-clip: text;
@@ -134,7 +132,7 @@ st.markdown("""
     .subtitle-glow {
         color: #80b0d0;
         letter-spacing: 3px;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         opacity: 0.85;
         text-shadow: 0 0 8px rgba(100,160,220,0.3);
     }
@@ -147,7 +145,7 @@ st.markdown("""
         -webkit-backdrop-filter: blur(20px);
         padding: 24px 28px;
         border-radius: 16px;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         border: 1px solid rgba(0,180,255,0.2);
         box-shadow: 0 4px 30px rgba(0,100,200,0.15), inset 0 1px 0 rgba(255,255,255,0.03);
         position: relative;
@@ -344,7 +342,7 @@ st.markdown("""
     /* ==================== 风险等级卡片 ==================== */
     .risk-card-high {
         background: linear-gradient(135deg, rgba(200,30,40,0.7), rgba(180,15,25,0.75)) !important;
-        padding: 30px;
+        padding: 36px 30px;
         border-radius: 20px;
         text-align: center;
         color: white;
@@ -352,26 +350,29 @@ st.markdown("""
         box-shadow: 0 0 30px rgba(255,30,30,0.3), 0 0 60px rgba(255,30,30,0.1);
         animation: pulse-danger 2s ease-in-out infinite;
         backdrop-filter: blur(10px);
+        margin-bottom: 8px;
     }
     .risk-card-medium {
         background: linear-gradient(135deg, rgba(200,120,20,0.7), rgba(180,100,10,0.75)) !important;
-        padding: 30px;
+        padding: 36px 30px;
         border-radius: 20px;
         text-align: center;
         color: white;
         border: 1px solid rgba(255,180,40,0.4);
         box-shadow: 0 0 30px rgba(255,140,20,0.3), 0 0 60px rgba(255,140,20,0.1);
         backdrop-filter: blur(10px);
+        margin-bottom: 8px;
     }
     .risk-card-low {
         background: linear-gradient(135deg, rgba(20,160,80,0.7), rgba(15,130,60,0.75)) !important;
-        padding: 30px;
+        padding: 36px 30px;
         border-radius: 20px;
         text-align: center;
         color: white;
         border: 1px solid rgba(80,255,140,0.4);
         box-shadow: 0 0 30px rgba(30,200,80,0.3), 0 0 60px rgba(30,200,80,0.1);
         backdrop-filter: blur(10px);
+        margin-bottom: 8px;
     }
 
     @keyframes pulse-danger {
@@ -417,7 +418,7 @@ st.markdown("""
         background: linear-gradient(135deg, rgba(8,22,50,0.75), rgba(14,30,65,0.65)) !important;
         padding: 14px 18px;
         border-radius: 12px;
-        margin: 8px 0;
+        margin: 10px 0;
         border: 1px solid rgba(40,140,210,0.25);
         border-left: 3px solid #40a0e0;
         backdrop-filter: blur(8px);
@@ -435,7 +436,7 @@ st.markdown("""
     .metric-card {
         background: linear-gradient(135deg,
             rgba(6,18,45,0.92), rgba(10,25,58,0.88)) !important;
-        padding: 20px;
+        padding: 24px;
         border-radius: 14px;
         text-align: center;
         box-shadow: 0 2px 18px rgba(0,60,140,0.18);
@@ -455,7 +456,7 @@ st.markdown("""
         height: 1px !important;
         background: linear-gradient(90deg,
             transparent 0%, rgba(0,150,255,0.25) 20%, rgba(0,200,255,0.4) 50%, rgba(0,150,255,0.25) 80%, transparent 100%) !important;
-        margin: 24px 0 !important;
+        margin: 32px 0 !important;
     }
 
     /* ==================== 表单容器 ==================== */
@@ -463,7 +464,7 @@ st.markdown("""
         background: rgba(8,20,50,0.35) !important;
         border: 1.5px solid rgba(60,180,255,0.28) !important;
         border-radius: 16px !important;
-        padding: 10px !important;
+        padding: 18px !important;
         backdrop-filter: blur(10px);
     }
 
@@ -567,7 +568,7 @@ st.markdown("""
 
     /* ==================== 响应式微调 ==================== */
     @media (max-width: 768px) {
-        .main-title-glow { font-size: 1.4rem; }
+        .main-title-glow { font-size: 1.8rem; }
     }
 </style>
 
@@ -790,7 +791,7 @@ if 'show_result' not in st.session_state:
 with st.sidebar:
     st.markdown("""
     <div style="text-align: center; padding: 10px 0;">
-        <h2 style="margin: 5px 0; font-family: 'Orbitron', sans-serif; font-size: 1.1rem;">
+        <h2 style="margin: 5px 0; font-family: 'Orbitron', sans-serif; font-size: 1.5rem;">
             ❤️心血管风险预测
         </h2>
         <p style="font-size: 0.7rem; color: #5080a0; letter-spacing: 1px;">CARDIOVASCULAR RISK ML</p>
@@ -832,7 +833,7 @@ with st.sidebar:
 col_title1, col_title2, col_title3 = st.columns([1, 3, 1])
 with col_title2:
     st.markdown("""
-    <div style="text-align: center; padding: 10px 0 5px 0;">
+    <div style="text-align: center; padding: 20px 0 15px 0;">
         <div class="main-title-glow">❤️ 心血管疾病风险预测系统</div>
         <p class="subtitle-glow">基于机器学习的心脏健康评估工具</p>
         <div style="margin-top: 8px;">
@@ -1017,8 +1018,10 @@ if not st.session_state.show_result:
 
     cols = st.columns([1, 3, 1])
     with cols[1]:
-        st.markdown(f"<p style='text-align:center; font-size:0.9rem; color: #8090b0;'>第 {st.session_state.step}/4 步</p>", unsafe_allow_html=True)
+        st.markdown(f"<p style='text-align:center; font-size:0.9rem; color: #8090b0; padding: 6px 0;'>第 {st.session_state.step}/4 步</p>", unsafe_allow_html=True)
         st.progress(st.session_state.step / 4)
+
+    st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
 
     with st.form(key=f"step_{st.session_state.step}"):
         field_values = {}
